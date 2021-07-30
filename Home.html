@@ -21,7 +21,7 @@ const randomString = (n, r='') => {
  };
   
  function shorten() {
-     var originalUrl = document.getElementById("urlBox").innerHTML;
+     var originalUrl = document.getElementById("urlBox").value;
     console.log("In Shorten method -- "+originalUrl);
      var randomStr = randomString(10);
      var shortUrl = "https://charankontham.github.io/Tiny-URL/Tinyurl.html?url"+randomString(10);
