@@ -1,21 +1,53 @@
 <html>
 <head>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
 <script>
+var firebaseConfig = {
+    apiKey: "AIzaSyCbmLhl7DgwL5Q0E4N3q0REOhqrBD_JSRU",
+    authDomain: "tinyurl-77cb5.firebaseapp.com",
+    projectId: "tinyurl-77cb5",
+    storageBucket: "tinyurl-77cb5.appspot.com",
+    messagingSenderId: "534432787624",
+    appId: "1:534432787624:web:1cd8d8d9d1667798e8a69d"
+  };
+  // Initialize Firebase
+firebase.initializeApp(firebaseConfig);  
+
 const randomString = (n, r='') => {
   while (n--) r += String.fromCharCode((r=Math.random()*62|0, r+=r>9?(r<36?55:61):48));
   return r;
  };
+  
  function shorten() {
-     var url = "http://www.google.com";
+     var originalUrl = document.getElementById("urlBox").innerHTML;
      var randomStr = randomString(10);
-     var shortURL = "tinyurl.html"
-     document.getElementById("shortlink").innerHTML = "https://charankontham.github.io/Tiny-URL/Tinyurl.html?url"+randomString(10);
+     var shortUrl = "https://charankontham.github.io/Tiny-URL/Tinyurl.html?url"+randomString(10);
+     storeInFireBase(originalUrl,shortUrl);
+     document.getElementById("urlBox").innerHTML = ""+shortUrl;
+     document.getElementById("btn").innerHTML = "Copy URL";
+     document.getElementById("btn").setAttribute('onclick','copyFunc()');
  }
+  function copyFun(){
+     var copiedText = document.getElementById("urlBox");
+     copiedText.select();
+     copiedText.setSelectionRange(0, 99999); /* For mobile devices */
+     document.execCommand("copy");
+     alert("URL Copied Successfully");
+  }
+  function storeInFireBase(url,shortUrl){
+    firebase.database().ref('UrlsData/'+url).set({
+      originalUrl : url,
+      shortenedUrl : shortUrl
+    });
+  }
+    
 
 </script>
 </head>
 <body>
-    <p id="shortlink"></p>
-    <button onclick="shorten()">Shorten</button>
+    <input type="text" id="urlBox" placeholder="Enter the URL">&nbsp&nbsp&nbsp
+    <button onclick="shorten()" id="btn">Shorten URL</button>
 </body>
 </html>
