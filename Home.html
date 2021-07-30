@@ -38,14 +38,18 @@ const randomString = (n, r='') => {
      alert("URL Copied Successfully");
   }
   function storeInFireBase(url,shortUrl){
-    var newUrl = url.replaceAll("/", "*");
-    newUrl = newUrl.replaceAll(".", "0");
-    newUrl = newUrl.replaceAll("#", "1");
-    console.log("In storeInFireBase method -- "+newUrl);
-    firebase.database().ref('UrlsData/'+newUrl).set({
-      originalUrl : url,
-      shortenedUrl : shortUrl
+//     firebase.database().ref('Ids/'+1).set({
+//       originalUrl : url,
+//       shortenedUrl : shortUrl
+//     });
+    firebase.database().ref('UrlsData/'+url).on('value',function(snapshot){
+      console.log(snapshot);
     });
+//     console.log("In storeInFireBase method -- "+url);
+//     firebase.database().ref('UrlsData/'+url).set({
+//       originalUrl : url,
+//       shortenedUrl : shortUrl
+//     });
   }
     
 
