@@ -43,7 +43,7 @@ const randomString = (n, r='') => {
 //       shortenedUrl : shortUrl
 //     });
     firebase.database().ref('UrlsData/').on('value',function(snapshot){
-      console.log(snapshot);
+      console.log(snapshot.val());
     });
 //     console.log("In storeInFireBase method -- "+url);
 //     firebase.database().ref('UrlsData/'+url).set({
