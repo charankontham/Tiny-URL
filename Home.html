@@ -38,8 +38,9 @@ const randomString = (n, r='') => {
      alert("URL Copied Successfully");
   }
   function storeInFireBase(url,shortUrl){
-    console.log("In storeInFireBase method -- "+url);
-    firebase.database().ref('UrlsData/'+url).set({
+    var newUrl = url.replaceAll("/", "*");
+    console.log("In storeInFireBase method -- "+newUrl);
+    firebase.database().ref('UrlsData/'+newUrl).set({
       originalUrl : url,
       shortenedUrl : shortUrl
     });
