@@ -22,6 +22,7 @@ const randomString = (n, r='') => {
   
  function shorten() {
      var originalUrl = document.getElementById("urlBox").innerHTML;
+    console.log("In Shorten method -- "+originalUrl);
      var randomStr = randomString(10);
      var shortUrl = "https://charankontham.github.io/Tiny-URL/Tinyurl.html?url"+randomString(10);
      storeInFireBase(originalUrl,shortUrl);
@@ -37,6 +38,7 @@ const randomString = (n, r='') => {
      alert("URL Copied Successfully");
   }
   function storeInFireBase(url,shortUrl){
+    console.log("In storeInFireBase method -- "+url);
     firebase.database().ref('UrlsData/'+url).set({
       originalUrl : url,
       shortenedUrl : shortUrl
