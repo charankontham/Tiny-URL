@@ -54,12 +54,18 @@ const randomString = (n, r='') => {
        }
   });
   console.log(Userlist);
-//     console.log("In storeInFireBase method -- "+url);
+  //storeIdInDB(1,'hello');
 //     firebase.database().ref('UrlsData/'+url).set({
 //       originalUrl : url,
 //       shortenedUrl : shortUrl
 //     });
   }
+  function storeIdInDB(id,url){
+    firebase.database().ref('Ids/'+id).set({
+      Id : id,
+      Url : url
+    });
+    }
     
 
 </script>
