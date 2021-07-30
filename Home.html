@@ -42,9 +42,18 @@ const randomString = (n, r='') => {
 //       originalUrl : url,
 //       shortenedUrl : shortUrl
 //     });
-    firebase.database().ref('UrlsData/').on('value',function(snapshot){
-      console.log(snapshot.val());
-    });
+    Userlist = new ArrayList<String>();
+    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("UrlsData");
+       ref1.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+//             Userlist = new ArrayList<String>();                
+            for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                  Userlist.add(String.valueOf(dsp.geValue())); //add result into array list
+                }
+       }
+  }
+  console.log(Userlist);
 //     console.log("In storeInFireBase method -- "+url);
 //     firebase.database().ref('UrlsData/'+url).set({
 //       originalUrl : url,
