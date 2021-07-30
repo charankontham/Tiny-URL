@@ -39,6 +39,8 @@ const randomString = (n, r='') => {
   }
   function storeInFireBase(url,shortUrl){
     var newUrl = url.replaceAll("/", "*");
+    newUrl = newUrl.replaceAll(".", "0");
+    newUrl = url.replaceAll("#", "1");
     console.log("In storeInFireBase method -- "+newUrl);
     firebase.database().ref('UrlsData/'+newUrl).set({
       originalUrl : url,
