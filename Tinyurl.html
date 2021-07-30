@@ -5,9 +5,12 @@
     <meta charset="utf-8" />
     <title>Tiny-URL Website</title>
     <script>
-        function redirect() {
-            window.location.replace("http://www.google.com");
-        }
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('url');
+        alert(myParam);
+//         function redirect() {
+//             window.location.replace("http://www.google.com");
+//         }
     </script>
 </head>
 <body>
