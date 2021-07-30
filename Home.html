@@ -42,7 +42,7 @@ const randomString = (n, r='') => {
 //       originalUrl : url,
 //       shortenedUrl : shortUrl
 //     });
-    Userlist = new ArrayList<String>();
+    Userlist = new ArrayList<String>()
     DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("UrlsData");
        ref1.addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
