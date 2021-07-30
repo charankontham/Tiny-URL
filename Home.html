@@ -42,14 +42,13 @@ const randomString = (n, r='') => {
 //       originalUrl : url,
 //       shortenedUrl : shortUrl
 //     });
-    Userlist = new ArrayList<String>();
+    var Userlist = [];
     DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("UrlsData");
        ref1.addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-//             Userlist = new ArrayList<String>();                
+        public void onDataChange(DataSnapshot dataSnapshot) {              
             for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                  Userlist.add(String.valueOf(dsp.geValue())); //add result into array list
+                  Userlist.push(String.valueOf(dsp.geValue())); //add result into array list
                 }
        }
   });
