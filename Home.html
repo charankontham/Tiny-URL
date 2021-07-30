@@ -27,7 +27,7 @@ const randomString = (n, r='') => {
      storeInFireBase(originalUrl,shortUrl);
      document.getElementById("urlBox").innerHTML = ""+shortUrl;
      document.getElementById("btn").innerHTML = "Copy URL";
-     document.getElementById("btn").setAttribute('onclick','copyFunc()');
+     document.getElementById("btn").setAttribute('onclick','copyFun()');
  }
   function copyFun(){
      var copiedText = document.getElementById("urlBox");
