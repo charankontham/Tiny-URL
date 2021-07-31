@@ -43,15 +43,15 @@ const randomString = (n, r='') => {
 //       shortenedUrl : shortUrl
 //     });
     var Userlist = [];
-    DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("UrlsData");
-       ref1.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {              
-            for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                  Userlist.push(String.valueOf(dsp.geValue())); //add result into array list
-                }
-       }
-  });
+//     DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("UrlsData");
+//        ref1.addListenerForSingleValueEvent(new ValueEventListener() {
+//         @Override
+//         public void onDataChange(DataSnapshot dataSnapshot) {              
+//             for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+//                   Userlist.push(String.valueOf(dsp.geValue())); //add result into array list
+//                 }
+//        }
+//   });
   console.log(Userlist);
   //storeIdInDB(1,'hello');
 //     firebase.database().ref('UrlsData/'+url).set({
